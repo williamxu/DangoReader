@@ -3,7 +3,6 @@ package com.william.mangoreader.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,13 +13,6 @@ import android.widget.Toast;
 
 import com.william.mangoreader.R;
 
-import java.util.ArrayList;
-
-import it.gmariotti.cardslib.library.internal.Card;
-import it.gmariotti.cardslib.library.internal.CardGridArrayAdapter;
-import it.gmariotti.cardslib.library.internal.CardHeader;
-import it.gmariotti.cardslib.library.view.CardGridView;
-
 ///**
 // * A simple {@link Fragment} subclass.
 // * Activities that contain this fragment must implement the
@@ -29,7 +21,7 @@ import it.gmariotti.cardslib.library.view.CardGridView;
 // * Use the {@link MyLibraryFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class MyLibraryFragment extends Fragment {
+public class BrowseMangaFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -49,8 +41,8 @@ public class MyLibraryFragment extends Fragment {
      * @return A new instance of fragment MyLibraryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyLibraryFragment newInstance(String param1, String param2) {
-        MyLibraryFragment fragment = new MyLibraryFragment();
+    public static BrowseMangaFragment newInstance(String param1, String param2) {
+        BrowseMangaFragment fragment = new BrowseMangaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,56 +50,26 @@ public class MyLibraryFragment extends Fragment {
         return fragment;
     }
 
-    public MyLibraryFragment() {
+    public BrowseMangaFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_my_library, container, false);
-
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-
-        // TODO: asynchronous loading
-
-        ArrayList<Card> cards = new ArrayList<Card>();
-
-        //Create a Card
-        Card card = new Card(activity);
-
-        //Create a CardHeader
-        CardHeader header = new CardHeader(activity);
-
-        //Add Header to card
-        card.addCardHeader(header);
-
-        cards.add(card);
-        cards.add(card);
-        cards.add(card);
-        cards.add(card);
-        cards.add(card);
-
-        CardGridArrayAdapter mCardArrayAdapter = new CardGridArrayAdapter(activity, cards);
-
-        CardGridView gridView = (CardGridView) rootView.findViewById(R.id.library_cards);
-//        if (gridView != null) {
-            gridView.setAdapter(mCardArrayAdapter);
-//        }
+        View rootView = inflater.inflate(R.layout.fragment_browse_manga, container, false);
 
         setHasOptionsMenu(true);
+
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -120,10 +82,9 @@ public class MyLibraryFragment extends Fragment {
 //    }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuinflator) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        inflater.inflate(R.menu.menu_my_library, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+        menuinflator.inflate(R.menu.menu_browse_manga, menu);
     }
 
     @Override

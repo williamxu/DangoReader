@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
-import android.widget.Toast;
 
 import com.william.mangoreader.R;
 
@@ -186,15 +185,6 @@ public class BrowsePageFragment extends SearchSortFragment {
         } else {
             Log.d("BrowsePageFragment", "genreIndex and sortIndex = -1");
             return cardAdapter.getFilter();
-        }
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            Toast.makeText(getContext(), "" + pageNumber, Toast.LENGTH_SHORT).show();
-        } else {
         }
     }
 }
